@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LaGomba{% endblock %}
+
+{% block body %} 
+<div class="container">
+  <a href="/admin/showAll" class="btn btn-light mt-4 mb-2"><i class="fa fa-backward"></i> Back</a>
+    <p class="h3 text-center m-3">Complete Message</p>
+      <div class="card m-5 border border-warning border-3">
+        <div class="card-body"> 
+            {{ contact.message }}                    
+        </div>
+      </div>    
+  </div>  
+{% endblock %}

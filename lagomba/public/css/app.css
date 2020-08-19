@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background: url("/img/bg.svg");
+  font-family: "Poppins", "Roboto";
+}
+
+label {
+  margin-top: 10px;
+}
+
+.wrapper {
+  max-width: 1250px;
+  text-align: center;
+}
+
+.event-picture {
+  height: 180px;
+}
+
+.card-body-container {
+  position: relative;
+}
+
+.card-button {
+  position: absolute;
+  bottom: 5px;
+  left: 50px;
+  right: 50px;
+  margin-bottom: 6px;
+}
+
+.btn-light {
+  background-color: #fff;
+  border: none;
+}
+
+#event_date_date_month,
+#event_date_date_day,
+#event_date_date_year,
+#event_date_time_hour,
+#event_date_time_minute {
+  margin-right: 10px !important;
+}
+
+#event_date_time_minute,
+#event_date_time_minute {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.opacity {
+  background-color: rgba(0, 0, 0, 0, 1);
+}
+
+.item-container {
+  width: 100%;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+
+@media (max-width: 576px) {
+  #event_date_date_month,
+  #event_date_date_day,
+  #event_date_date_year {
+    margin-bottom: 8px;
+  }
+}

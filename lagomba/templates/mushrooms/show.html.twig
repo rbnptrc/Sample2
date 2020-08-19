@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container my-5">
+
+  <a href="/webshop" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
+  {% if is_granted('ROLE_ADMIN') %}
+  <a href="/admin/delete/{{ mushroom.id }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i> Delete</a>
+  <a href="/admin/edit/{{ mushroom.id }}" class="btn btn-warning pull-right mr-2"><i class="fa fa-edit"></i> Edit</a>
+  {% endif %}
+  </a>
+  <br />
+  <div class="row item-container">
+    <div class="card text-center mt-4 mb-2 col-12 col-lg-6 p-0">
+      <div class="card-header">
+        <strong>{{ mushroom.name }}</strong>
+      </div>
+      <div class="card-body">
+        <img src="{{ mushroom.img }}" class="card-title img-fluid" /><img />
+        <p class="card-text">{{ mushroom.description }}</p>
+        <p>Price: {{ mushroom.unit_price | number_format(2, ',', '.') }} &#8364;</p>
+        <p class="card-text">Quantity: {{ mushroom.quantity }}g</p>
+        <p class="card-text">Available Stock: {{ mushroom.stock }}g</p>
+      </div>
+      <div class="card-footer text-muted">
+        <a class="badge badge-primary" href="mailto:rr.noar@gmail.com">Questions? Email Us</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mt-4 mb-4">
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+h1 {
+  margin: 0;
+}
+
+hr {
+   border: 2px solid #FFC107;
+   width: 150px;
+   margin: 0px;
+}
+
+h2 {
+   color: #FFC107;    
+}
+
+p {
+  font-size: 20px;      
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+}
+
+textarea {
+  resize: none;
+}
+
+/* about mushrooms page start */
+[class*="parallax"] {
+  /* The image used */
+  background-image: url("../img/16.JPG");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+[class*="_1"] {
+    background-image: url("../img/5.JPG");
+}
+
+[class*="_2"] {
+    background-image: url("../img/2.JPG");
+}
+
+[class*="_3"] {
+    background-image: url("../img/3.jpg");
+}
+
+[class*="_4"] {
+    background-image: url("../img/4.jpg");
+}
+
+[class*="_5"] {
+    background-image: url("../img/1.JPG");
+}
+
+/* about-mushrooms page end */
+
+
+/* about-us page start */
+.img {
+  max-width: 10em;
+}
+
+.she {
+  max-width: 15em;
+}
+
+.coffee {
+  background-image: url('../img/coffee.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+
+[class*="_6"] {
+    background-image: url("../img/how.jpeg");
+}
+
+.hey {
+  max-width: 20em;
+}
+
+/* about-us page end */
+
+
+/* resipes-page start */
+.icon {
+  width: 2em;      
+}
+
+.icon-back {
+  background-color: #FFC107;
+}
+/* resipes-page end */

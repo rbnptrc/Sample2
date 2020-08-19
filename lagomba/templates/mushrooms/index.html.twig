@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %} {% block body %}
+<div class="container mt-5">
+    {% if app.flashes is defined %}
+    {% for message in app.flashes('notice') %}
+        <div class="row px-4" id="alert-message">
+            <div class="col-12 alert alert-success" role="alert"">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if (mushroomCount != 0) %}
+        <div class="row mb-4">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/checkout">My Cart</a>
+                        <span class="badge badge-primary badge-pill">{{ mushroomCount }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    
+        
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h1>Mushroom WebShop</h1>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="col-md-6 mb-3">
+            <a href="{{ path("mushroom-create") }}" class="btn btn-primary float-md-right">
+                <i class="fa fa-pencil"></i> Add a new Mushroom
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+    <div class="container-fluid wrapper">
+        <div class="row mt-5 d-flex justify-content-center" id="events-content" id="small">
+            {% if mushrooms | length == 0 %}
+                There are no mushrooms
+            {% endif %}
+            {% for mushroom in mushrooms %}
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
+                <div class="card mb-4 bg-white h-100">
+                    <img class="event-picture" src="{{ mushroom.img }}" class="d-inline-block d-none d-md-inline-block card-img-top" alt="picture of a mushroom">
+                    <div class="card-body d-flex flex-column card-body-container">
+                        <h5 class="card-title">{{ mushroom.name }}</h5>
+                        <p>{{ mushroom.unit_price | number_format(2, ',', '.') }} &#8364;</p>
+                        <p>{{ mushroom.quantity }} g</p>
+                        <a href="/webshop/mushroom/{{ mushroom.id }}" class="btn btn-warning card-button">Details</a>
+                    </div>
+                </div>
+            </div>
+    
+            {% endfor %}
+            
+        
+        </div>
+
+    </div>
+
+{% endblock %}

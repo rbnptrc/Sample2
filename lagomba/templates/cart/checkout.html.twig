@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}Checkout{% endblock %}
+{% block body %}
+<div class="row mt-4">
+    <div class="col-md-8"></div>
+    <div class="col-md-4">
+        <a href="/remove-cart">CLEAR CART</a>
+    </div>
+</div>
+<br/>
+<br/>
+<div class="container mb-4">
+    {% if app.flashes is defined %}
+    {% for message in app.flashes('notice') %}
+        <div class="row px-4" id="alert-message">
+            <div class="col-12 alert alert-success" role="alert"">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Price</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for mushroom in mushrooms %}
+        <tr class="table">
+            <td>{{ mushroom['name'] }}</td>
+            <td>{{ mushroom['qty'] }}</td>
+            <td>{{ mushroom['unit_price'] | number_format(2, ',', '.') }} &#8364;</td>
+            <td>{{ mushroom['price'] | number_format(2, ',', '.') }} &#8364;</td>
+            <td><a href="/remove-item/{{ mushroom.id }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a></td>
+        </tr>
+    {% endfor %}
+    <tr class="table">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>Total : </b></td>
+        <td>{{ sub_total | number_format(2, ',', '.') }} &#8364;</td>
+    </tr>
+    <tr class="table">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>Sub total : </b></td>
+        <td>{{ total | number_format(2, ',', '.') }} &#8364;</td>
+    </tr>
+        </tbody>
+    </table>
+    <div class="row d-flex justify-content-center">
+        <div id="paypal-button-container"></div>
+
+    </div>
+</div>
+</div>
+
+{% endblock %}

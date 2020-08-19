@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Mushroom Orders
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    {% if app.flashes is defined %}
+    {% for message in app.flashes('notice') %}
+        <div class="row px-4" id="alert-message">
+            <div class="col-12 alert alert-success" role="alert"">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+	{% if orders | length == 0 %}
+		There are no orders
+	{% endif %}
+	<div class=" accordion" id="accordionExample">
+	{% for order in orders %}
+		<div class="card">
+			<div class="card-header" id="headingOne{{order.id}}">
+				<div class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne{{order.id}}" aria-expanded="true" aria-controls="collapseOne{{order.id}}">
+					<span>Order ID: #{{ order.id }}</span>
+					<span class="pull-right">Date:
+						{{ order.orderTime | date('m.d.Y H:i:s') }}</span>
+				</div>
+			</div>
+
+			<div id="collapseOne{{order.id}}" class="collapse" aria-labelledby="headingOne{{order.id}}" data-parent="#accordionExample">
+				<div class="card-body">
+                    <a href="/admin/remove-order/{{ order.id }}" class="btn btn-danger btn-sm pull-right"><i class="fa fa-trash"></i> Delete</a></td>
+                    Shipping Address:
+                    <br>
+					{{ order.name }}
+					<br>
+					{{ order.address }}
+					<br>
+					{{ order.zip }}
+                    {{ order.city }}
+					<hr class="mb-2 w-100">
+					Order:
+					<div class="row">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th scope="col">Name</th>
+									<th scope="col">Qty</th>
+									<th scope="col">Unit Price</th>
+									<th scope="col">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for item in order.items %}
+									<tr class="table">
+										<td>{{ item.name }}</td>
+										<td>{{ item.qty }}</td>
+										<td>{{ item.unit_price | number_format(2, ',', '.') }}
+											&#8364;</td>
+										<td>{{ item.price | number_format(2, ',', '.') }}
+											&#8364;</td>
+									</tr>
+                                {% endfor %}
+                                <tr class="table">
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Total : </b></td>
+                                    <td>{{ order.total | number_format(2, ',', '.') }} &#8364;</td>
+                                </tr>
+                                <tr class="table">
+                                    <td></td>
+                                    <td></td>
+                                    <td><b>Paid with : </b></td>
+                                    <td><img src="https://www.paypalobjects.com/webstatic/de_DE/i/de-pp-logo-100px.png" border="0" alt="PayPal Logo" /></td>
+                                </tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+            </div>
+		</div>
+        {% endfor %}
+        
+	</div>
+</div>
+{% endblock %}
